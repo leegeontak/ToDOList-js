@@ -95,10 +95,21 @@ input[type='checkbox'] {
   justify-content: space-around;
   align-items: center;
 }
-/* #EditForm .tag {
-  display: flex;
-  justify-content: space-between;
-} */
+.addFormClose,
+.changeFormClose{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-image: url(close.png);
+  background-size: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 20px 20px 0px 0px;
+}
+.close:hover{
+  cursor: pointer;
+}
 #AddList input[type='text'] {
   margin-top: 24px;
 }
@@ -200,6 +211,9 @@ input[type='radio'] {
 .tag {
   display: flex;
   align-items: center;
+}
+label{
+  font-size: 20px;
 }
 label,
 .AllView {

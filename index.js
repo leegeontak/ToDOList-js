@@ -9,6 +9,8 @@ const changeForm = document.querySelector('.changeForm');
 const tagNavRadio = document.querySelectorAll('.tagNav input[name="info"]');
 const AllView = document.querySelector('.AllView');
 const radioLabel = document.querySelectorAll('input[type="radio"]');
+const addFormClose = document.querySelector(".addFormClose")
+const changeFormClose = document.querySelector(".changeFormClose")
 
 for (let i = 0; i < radioLabel.length; i++) {
   radioLabel[i].addEventListener('click', function (e) {
@@ -155,21 +157,20 @@ addForm.addEventListener('click', (e) => {
     }
   }
 });
+addFormClose.addEventListener("click",()=>{
+  addForm.classList.add("hidden")
+})
 changeForm.addEventListener('submit', changeSubmit);
 changeForm.addEventListener('click', (e) => {
   if (e.target.classList == 'changeForm') {
     changeForm.classList.add('hidden');
     document.querySelector('#list .check').classList.remove('check');
-    const EditRadio = document.querySelectorAll(
-      '#EditForm .tagContainer input[type="radio"]'
-    );
-    for (let i = 0; i < asd.length; i++) {
-      if (EditRadio[i].checked == true) {
-        EditRadio[i].checked = false;
-      }
-    }
+    
   }
 });
+changeFormClose.addEventListener("click",()=>{
+  changeForm.classList.add("hidden")
+})
 AllView.addEventListener('click', () => {
   const li = document.querySelectorAll('#list li');
   for (let i = 0; i < li.length; i++) {
@@ -181,3 +182,10 @@ AllView.addEventListener('click', () => {
     tagNavRadio[i].parentElement.style.backgroundColor = 'transparent';
   }
 });
+
+document.addEventListener("keydown",(e)=>{
+  if(e.key == "Escape"){
+    addForm.classList.add("hidden")
+    changeForm.classList.add("hidden")
+  }
+})
