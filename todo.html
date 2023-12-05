@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <h2>TODOList</h2>
+      <div class="tagNav">
+        <button class="AllView">전체 보기</button>
+        <label
+          ><input
+            type="radio"
+            name="info"
+            class="category box work"
+            value="work"
+          />work</label
+        >
+
+        <label
+          ><input
+            type="radio"
+            name="info"
+            class="category box study"
+            value="study"
+          />study</label
+        >
+
+        <label
+          ><input
+            type="radio"
+            name="info"
+            class="category box enter"
+            value="enter"
+          />entertainment</label
+        >
+
+        <label
+          ><input
+            type="radio"
+            name="info"
+            class="category box health"
+            value="health"
+          />health</label
+        >
+      </div>
+    </header>
+    <div class="section1">
+      <div class="container">
+        <button class="add">+</button>
+        <h2 class="ToDoCount">할일</h2>
+        <ul id="list"></ul>
+      </div>
+      <div class="addForm hidden">
+        <div class="AddContainer">
+          <form id="AddList">
+            <!-- <textarea name="" id="AddText" cols="30" rows="10"></textarea> -->
+            <input type="text" placeholder="추가할 사항을 입력하세요" />
+            <div class="tagContainer">
+              <label
+                ><input
+                  type="radio"
+                  name="info2"
+                  class="category box work"
+                  value="work"
+                />work</label
+              >
+
+              <label
+                ><input
+                  type="radio"
+                  name="info2"
+                  class="category box study"
+                  value="study"
+                />study</label
+              >
+
+              <label
+                ><input
+                  type="radio"
+                  name="info2"
+                  class="category box enter"
+                  value="enter"
+                />entertainment</label
+              >
+
+              <label
+                ><input
+                  type="radio"
+                  name="info2"
+                  class="category box health"
+                  value="health"
+                />health</label
+              >
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="changeForm hidden">
+        <div class="EditContainer">
+          <form id="EditForm">
+            <input type="text" placeholder="변경할 사항을 입력하세요" />
+            <div class="tagContainer">
+              <label
+                ><input
+                  type="radio"
+                  name="info2"
+                  class="category box work"
+                  value="work"
+                />work</label
+              >
+
+              <label
+                ><input
+                  type="radio"
+                  name="info2"
+                  class="category box study"
+                  value="study"
+                />study</label
+              >
+
+              <label>
+                <input
+                  type="radio"
+                  name="info2"
+                  class="category box enter"
+                  value="enter"
+                />entertainment
+              </label>
+
+              <label>
+                <input
+                  type="radio"
+                  name="info2"
+                  class="category box health"
+                  value="health"
+                />health
+              </label>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
