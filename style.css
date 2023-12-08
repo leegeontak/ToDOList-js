@@ -162,18 +162,34 @@ li div {
   gap: 10px;
 }
 
-li button {
+li .deletebtn,
+li .pinbtn,
+li .pinbtn:checked {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   width: 30px;
   height: 30px;
   border: none;
-  background-image: url(/trash.png);
   background-size: 100% 100%;
   background-color: transparent;
 }
+li .deletebtn{
+  background-image: url(/trash.png);
+}
+li .pinbtn{
+  border-radius: 0;
+  background-image: url(/pinOff.png);
+}
+li .pinbtn:checked{
+  border-radius: 0;
+  background-image: url(/pinOn.png);
+}
+
 li button:hover {
+  cursor: pointer;
+}
+li .pinbtn:hover{
   cursor: pointer;
 }
 .tagNav {

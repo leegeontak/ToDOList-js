@@ -66,17 +66,22 @@ function addList(ToDovalue) {
   taskCount = taskCount + 1;
   TODoCount.innerText = '할 일이 ' + taskCount + '개 남았습니다';
   const li = document.createElement('li');
-  const div = document.createElement('div');
+  const textContainer = document.createElement('div');
+  const buttonContainer = document.createElement('div');
   const inp = document.createElement('input');
   const span = document.createElement('span');
   const DeleteButton = document.createElement('button');
+  DeleteButton.className = "deletebtn"
+  const PinButton = document.createElement("input");
+  PinButton.type = "checkbox"
+  PinButton.className = "pinbtn"
   const radioValue = document.querySelector(
     '.tagContainer input[type="radio"]:checked'
   );
 
-  li.appendChild(div);
-  div.append(inp,span)
-  li.appendChild(DeleteButton);
+  textContainer.append(inp,span)
+  buttonContainer.append(PinButton,DeleteButton)
+  li.append(textContainer,buttonContainer);
   try {
     inp.classList.add(radioValue.value);
     inp.type = 'checkbox';
@@ -86,6 +91,7 @@ function addList(ToDovalue) {
   }
 
   DeleteButton.addEventListener('click', delList);
+  PinButton.addEventListener("click",pinList)
   span.innerText = ToDovalue;
   span.addEventListener('dblclick', changeList);
   list.appendChild(li);
@@ -107,6 +113,8 @@ function changeList(e) {
   changeForm.classList.remove('hidden');
   changeInput.value = e.target.innerText;
   e.target.innerText = changeInput.value;
+  const input = document.querySelector("#EditForm input[type=text]")
+  input.focus()
 }
 function changeSubmit(event) {
   event.preventDefault();
@@ -126,15 +134,23 @@ function changeSubmit(event) {
 }
 
 function delList(event) {
-  const li = event.target.parentNode;
+  const li = event.target.parentNode.parentNode;
   taskCount = taskCount - 1;
   TODoCount.innerText = '할 일이 ' + taskCount + '개 남았습니다';
   li.remove();
 }
-
+function pinList(){
+  const pinLi = document.querySelectorAll(".pinbtn:checked");
+  pinLi.forEach((item)=>{
+    list.insertBefore(item.parentElement.parentElement,list.firstChild)
+  })
+}
 AddList.addEventListener('submit', AddSubmit);
 addBtn.addEventListener('click', () => {
   addForm.classList.remove('hidden');
+  const input = document.querySelector("#AddList input[type=text]")
+  input.focus()
+  console.log(input)
   const radioValue = document.querySelector(
     '.tagContainer input[type="radio"]:checked'
   );
