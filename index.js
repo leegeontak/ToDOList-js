@@ -38,9 +38,9 @@ for (let i = 0; i < tagNavRadio.length; i++) {
       .getElementById('list')
       .getElementsByClassName(e.target.value);
     for (let i = 0; i < ClickCategory.length; i++) {
-      ClickCategory[i].parentElement.parentElement.style.display = "flex"
+      ClickCategory[i].parentElement.parentElement.style.display = "flex";
     }
-    $('li input')
+    $('li .textFrame input')
       .not('.' + e.target.value)
       .parent()
       .parent()
@@ -67,7 +67,9 @@ function addList(ToDovalue) {
   TODoCount.innerText = '할 일이 ' + taskCount + '개 남았습니다';
   const li = document.createElement('li');
   const textContainer = document.createElement('div');
+  textContainer.classList.add("textFrame")
   const buttonContainer = document.createElement('div');
+  buttonContainer.classList.add("buttonFrame")
   const inp = document.createElement('input');
   const span = document.createElement('span');
   const DeleteButton = document.createElement('button');
@@ -150,7 +152,6 @@ addBtn.addEventListener('click', () => {
   addForm.classList.remove('hidden');
   const input = document.querySelector("#AddList input[type=text]")
   input.focus()
-  console.log(input)
   const radioValue = document.querySelector(
     '.tagContainer input[type="radio"]:checked'
   );
@@ -192,7 +193,6 @@ AllView.addEventListener('click', () => {
   for (let i = 0; i < li.length; i++) {
     li[i].style.display = 'flex';
   }
-
   for (let i = 0; i < tagNavRadio.length; i++) {
     tagNavRadio[i].checked = false;
     tagNavRadio[i].parentElement.style.backgroundColor = 'transparent';
