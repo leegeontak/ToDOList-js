@@ -51,7 +51,6 @@ input[type='text'] {
   position: relative;
 }
 .add {
-  /* position: absolute; */
   border: none;
   border-radius: 100%;
   width: 50px;
@@ -59,6 +58,9 @@ input[type='text'] {
   right: 0;
   font-size: 2rem;
   box-shadow: rgba(99, 99, 99, 0.3) 0px 5px 8px 3px;
+}
+.add:hover{
+  cursor: pointer;
 }
 input[type='checkbox'] {
   width: 30px;
@@ -164,6 +166,7 @@ li div {
 
 li .deletebtn,
 li .pinbtn,
+li .editbtn,
 li .pinbtn:checked {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -173,6 +176,9 @@ li .pinbtn:checked {
   border: none;
   background-size: 100% 100%;
   background-color: transparent;
+}
+li .editbtn{
+  background-image: url(/edit.png);
 }
 li .deletebtn{
   background-image: url(/trash.png);

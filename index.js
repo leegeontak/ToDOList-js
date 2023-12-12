@@ -13,7 +13,7 @@ const addFormClose = document.querySelector(".addFormClose")
 const changeFormClose = document.querySelector(".changeFormClose")
 
 for (let i = 0; i < radioLabel.length; i++) {
-  radioLabel[i].addEventListener('click', function (e) {
+  radioLabel[i].addEventListener('click',(e) => {
     e.target.parentElement.animate(
       [
         {
@@ -54,7 +54,7 @@ $('label').click(function () {
 });
 // 이것도 제이쿼리 문법임 위와 같음. 형제요소의 속성을 변환시킨것.
 let currentWord = '';
-var taskCount = 0;
+let taskCount = 0;
 TODoCount.innerText = '할 일이 ' + taskCount + '개 남았습니다';
 function AddSubmit(e) {
   e.preventDefault();
@@ -77,12 +77,14 @@ function addList(ToDovalue) {
   const PinButton = document.createElement("input");
   PinButton.type = "checkbox"
   PinButton.className = "pinbtn"
+  const EditButton = document.createElement("button");
+  EditButton.className = "editbtn"
   const radioValue = document.querySelector(
     '.tagContainer input[type="radio"]:checked'
   );
 
   textContainer.append(inp,span)
-  buttonContainer.append(PinButton,DeleteButton)
+  buttonContainer.append(PinButton,EditButton,DeleteButton)
   li.append(textContainer,buttonContainer);
   try {
     inp.classList.add(radioValue.value);
@@ -95,26 +97,30 @@ function addList(ToDovalue) {
   DeleteButton.addEventListener('click', delList);
   PinButton.addEventListener("click",pinList)
   span.innerText = ToDovalue;
-  span.addEventListener('dblclick', changeList);
+  // span.addEventListener('dblclick', changeList);
+  EditButton.addEventListener("click",changeList);
   list.appendChild(li);
 }
 function changeList(e) {
-  e.target.classList.add('check');
+  const ClickLi = e.target.parentElement.parentElement
+  ClickLi.querySelector("span").classList.add("check")
+  const ClickSpan = ClickLi.querySelector(".check")
   const EditRadio = document.querySelectorAll(
     '#EditForm .tagContainer input[type=radio]'
   );
+  const ClickCategory = ClickLi.querySelector(".textFrame").querySelector("input[type=checkbox]")
   for (let i = 0; i < EditRadio.length; i++) {
-    if (EditRadio[i].value == e.target.previousElementSibling.classList) {
+    if (EditRadio[i].value == ClickCategory.classList) {
       EditRadio[i].checked = true;
       EditRadio[i].parentElement.style.backgroundColor = 'gray';
       $(EditRadio[i]).parent().siblings().css('backgroundColor', 'transparent');
     }
   }
-
+  console.log(ClickLi.querySelector(".check"))
   e.target.previousElementSibling.classList;
   changeForm.classList.remove('hidden');
-  changeInput.value = e.target.innerText;
-  e.target.innerText = changeInput.value;
+  changeInput.value = ClickSpan.innerText;
+  ClickSpan.innerText = changeInput.value;
   const input = document.querySelector("#EditForm input[type=text]")
   input.focus()
 }
@@ -187,6 +193,7 @@ changeForm.addEventListener('click', (e) => {
 });
 changeFormClose.addEventListener("click",()=>{
   changeForm.classList.add("hidden")
+  document.querySelector('#list .check').classList.remove('check');
 })
 AllView.addEventListener('click', () => {
   const li = document.querySelectorAll('#list li');
@@ -203,5 +210,7 @@ document.addEventListener("keydown",(e)=>{
   if(e.key == "Escape"){
     addForm.classList.add("hidden")
     changeForm.classList.add("hidden")
+    document.querySelector('#list .check').classList.remove('check');
   }
+
 })
